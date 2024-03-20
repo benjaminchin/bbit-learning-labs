@@ -23,8 +23,9 @@ def main(sector: str, queueName: str) -> None:
     #
     #                       WRITE CODE HERE!!!
     #
-    
-    consumer = mqConsumer(binding_key=bindingKey,exchange_name="Tech Lab Topic Exchange",queue_name=queueName)    
+
+    bindingKey = "*.*" + sector
+    consumer = mqConsumer(binding_key= bindingKey,exchange_name="Tech Lab Topic Exchange",queue_name=queueName)    
     consumer.startConsuming()
     
 
@@ -35,5 +36,8 @@ if __name__ == "__main__":
     #
     #                       WRITE CODE HERE!!!
     #
-
-    sys.exit(main(sector,queue))
+    print("Name of the program using sys.argv[0]: ", sys.argv[0])
+    programName = sys.argv[0]
+    sectorName = sys.argv[1]
+    queueName = sys.argv[2]
+    sys.exit(main(sectorName,queueName))
