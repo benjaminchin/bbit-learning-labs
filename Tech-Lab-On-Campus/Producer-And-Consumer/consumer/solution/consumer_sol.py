@@ -6,7 +6,7 @@ class mqConsumer(mqConsumerInterface):
         self.binding_key = binding_key
         self.exchange_name = exchange_name
         self.queue_name = queue_name
-        self.setupRMQConnection
+        self.setupRMQConnection()
 
 
     def setupRMQConnection(self) -> None:
@@ -23,7 +23,7 @@ class mqConsumer(mqConsumerInterface):
         exchange= self.exchange_name ,
         )
         self.channel.basic_consume(
-        self.queue_name , on_message_callback, auto_ack=False
+        self.queue_name , self.on_message_callback, auto_ack=False
         )
 
         def on_message_callback(
