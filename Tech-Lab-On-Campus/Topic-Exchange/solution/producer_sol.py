@@ -13,7 +13,7 @@ class mqProducer(mqProducerInterface):
         self.connection = pika.BlockingConnection(parameters=con_params)
 
         self.channel = self.connection.channel()
-        self.exchange = self.channel.exchange_declare(exchange=self.exchange_name)
+        self.exchange = self.channel.exchange_declare(exchange=self.exchange_name, exchange_type="topic")
         
     def publishOrder(self, message: str):
         self.channel.basic_publish(
