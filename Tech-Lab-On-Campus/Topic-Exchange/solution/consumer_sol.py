@@ -29,7 +29,7 @@ class mqConsumer(mqConsumerInterface):
         self.queue_name , self.on_message_callback, auto_ack=False
         )
 
-        def on_message_callback(
+    def on_message_callback(
         self, channel, method_frame, header_frame, body
     ) -> None:
         # Acknowledge message
